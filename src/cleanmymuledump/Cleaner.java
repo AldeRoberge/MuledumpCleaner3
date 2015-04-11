@@ -50,6 +50,8 @@ public class Cleaner implements ActionListener {
 								
 								Run.info.setText("Completed at " + Run.answered * 100 / Run.accounts.size() + "% | " + addedMsg + " | " + removedMsg);
 								
+								System.out.println("LINE : "+answer);
+								
 								if (answer.contains("<Error>")) {
 									
 									if (answer.contains("Account is under maintenance")) { //Account is Banned
