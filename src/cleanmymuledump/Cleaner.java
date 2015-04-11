@@ -114,7 +114,7 @@ public class Cleaner implements ActionListener {
 					
 				}
 				
-				Run.info.setText("Added " + Run.added + " and removed " + Run.fatalError + " account from file — Done.");
+				Run.info.setText("Added " + Run.added + " and removed " + Run.fatalError + " account from file â€” Done.");
 				Run.debug("Completed.");
 				
 				Run.getMD.setText("Save file");
@@ -149,7 +149,7 @@ public class Cleaner implements ActionListener {
 	}
 	
 	public static String getAppspotLink(String email, String pass) {
-		return "http://realmofthemadgod.appspot.com/char/list?guid=" + email + "&password=" + pass;
+		return "http://realmofthemadgodhrd.appspot.com/char/list?guid=" + email + "&password=" + pass;
 	}
 	
 }
