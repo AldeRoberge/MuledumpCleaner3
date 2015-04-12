@@ -129,7 +129,7 @@ public class Cleaner implements ActionListener {
 	}
 	
 	public static void parse(String email, String password, String answer){
-		if (!answer.contains("NoneType")){
+		if (!answer.contains("NoneType") && !answer.contains("in use")){
 		
 			Run.added++;
 		
