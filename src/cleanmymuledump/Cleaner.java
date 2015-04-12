@@ -129,25 +129,32 @@ public class Cleaner implements ActionListener {
 	}
 	
 	public static void parse(String email, String password, String answer){
-		Run.added++;
+		if (!answer.contains("NoneType")){
 		
-		//TODO: Check the answer for
+			Run.added++;
 		
-		int nextCharId = Integer.parseInt(answer.substring((answer.indexOf("nextCharId=\"") + 12), answer.indexOf("\" maxNumChars")));
+			//TODO: Check the answer for
 		
-		if (nextCharId > Run.maximumRank) {
-			Run.maximumRank = nextCharId;
-		}
+			int nextCharId = Integer.parseInt(answer.substring((answer.indexOf("nextCharId=\"") + 12), answer.indexOf("\" maxNumChars")));
 		
-		if (answer.contains("<Account><Name>")) {
-			String name = answer.substring(answer.indexOf("<Account><Name>") + 15, answer.indexOf("</Name>"));
-			Run.print("Added new account \"" + name + "\".");
-			Run.cleanedVersion.put("'" + email + "': '" + password + "', //" + name, nextCharId);
-			Run.debug("Added " + name + ".");
+			if (nextCharId > Run.maximumRank) {
+				Run.maximumRank = nextCharId;
+			}
+		
+			if (answer.contains("<Account><Name>")) {
+				String name = answer.substring(answer.indexOf("<Account><Name>") + 15, answer.indexOf("</Name>"));
+				Run.print("Added new account \"" + name + "\".");
+				Run.cleanedVersion.put("'" + email + "': '" + password + "', //" + name, nextCharId);
+				Run.debug("Added " + name + ".");
+			} else {
+				Run.debug("Error : Could not find " + email + "'s name. Added him anyway.");
+				Run.print("Added new account \"" + email + "\".");
+				Run.cleanedVersion.put("'" + email + "': '" + password + "',", nextCharId);
+			}
+		
 		} else {
-			Run.debug("Error : Could not find " + email + "'s name. Added him anyway.");
-			Run.print("Added new account \"" + email + "\".");
-			Run.cleanedVersion.put("'" + email + "': '" + password + "',", nextCharId);
+			//invalid line
+			System.err.println("IGN0RED");
 		}
 	}
 	
